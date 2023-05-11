@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.urlencoded({ extended: true })
 
 const sqlite3 = require('sqlite3').verbose();
-const DBPATH = '../data/curriculo.db';
+const DBPATH = 'data/curriculo.db';
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -21,7 +21,7 @@ app.get('/dadospessoais', (req, res) => {
 	res.statusCode = 200;
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	var db = new sqlite3.Database(DBPATH); // Abre o banco
-	var sql = 'SELECT * FROM dados_pessoais';
+	var sql = 'SELECT * FROM dados_pessoais ORDER BY ID COLLATE NOCASE';
 		db.all(sql, [],  (err, rows ) => {
 			if (err) {
 				throw err;
@@ -99,26 +99,8 @@ app.get('/removedadospessoais', urlencodedParser, (req, res) => {
 	db.close(); // Fecha o banco
 });
 
-app.listen(port, hostname, () => {
-  console.log(`Servidor rodando em http://${hostname}:${port}/`);
-});
 
 //Atvd ponderada semana 4
-
-//Tabela dados_pessoais
-app.get('/dadospessoais', (req, res) => {
-	res.statusCode = 200;
-	res.setHeader('Access-Control-Allow-Origin', '*');
-	var db = new sqlite3.Database(DBPATH); // Abre o banco
-	var sql = 'SELECT * FROM dados_pessoais';
-		db.all(sql, [],  (err, rows ) => {
-			if (err) {
-				throw err;
-			}
-			res.json(rows);
-		});
-		db.close(); // Fecha o banco
-});
 
 //Tabela experiencia
 app.get('/experiencia', (req, res) => {
@@ -180,3 +162,7 @@ app.get('/sobremim', (req, res) => {
 		db.close(); // Fecha o banco
 });
 
+
+app.listen(port, hostname, () => {
+	console.log(`Servidor rodando em http://${hostname}:${port}/`);
+  });
