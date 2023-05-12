@@ -9,11 +9,6 @@ const hostname = '127.0.0.1';
 const port = 3000;
 const app = express();
 
-/* Colocar toda a parte estática no frontend */
-app.use(express.static('frontend/'));
-
-/* Definição dos endpoints */
-/******** CRUD ************/
 app.use(express.json());
 
 // Retorna todos registros (é o R do CRUD - Read)
@@ -22,7 +17,7 @@ app.get('/dadospessoais', (req, res) => {
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	var db = new sqlite3.Database(DBPATH); // Abre o banco
 	var sql = 'SELECT * FROM dados_pessoais ORDER BY ID COLLATE NOCASE';
-		db.all(sql, [],  (err, rows ) => {
+		db.all(sql, (err, rows ) => {
 			if (err) {
 				throw err;
 			}
