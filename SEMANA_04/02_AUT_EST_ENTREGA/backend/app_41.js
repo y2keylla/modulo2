@@ -53,7 +53,7 @@ app.post('/atualizaUsuario', (req, res) => {
 	res.statusCode = 200;
 	res.setHeader('Access-Control-Allow-Origin', '*'); 
 	console.log(req.body)
-	sql = "UPDATE dados_pessoais set nome = " + req.body.nome + " WHERE email = "+ req.body.email;
+	sql = "UPDATE dados_pessoais set nome = '" + req.body.nome + "' WHERE email = '" + req.body.email + "'";
 	console.log(sql);
 	var db = new sqlite3.Database(DBPATH); // Abre o banco
 	db.all(sql, [],  (err, rows ) => {

@@ -24,6 +24,7 @@
         let url = new URL(window.location.href);
         let params = url.searchParams;
         url = '/atualizaUsuario?id='+url.searchParams.get("id");
+        let id = url.searchParams.get("id");
 
         fetch(url)
         .then((response) => {
@@ -33,7 +34,7 @@
             let usuarios = data;
 
             usuarios.map(function(usuario) {
-                document.getElementById('id').value = usuario.id;
+                document.getElementById('id').value = id;
                 document.getElementById('nome').value = usuario.nome;
                 document.getElementById('email').value = usuario.email;
                 document.getElementById('celular').value = usuario.celular;
