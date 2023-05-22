@@ -92,7 +92,7 @@ body.dark-theme{
 
 .change-theme{
   font-size: 1.25rem;
-  color: var(--title-color);
+  color: #fff;
   margin-right: var(--mb-1);
   cursor: pointer;
 }
