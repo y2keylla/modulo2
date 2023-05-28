@@ -81,7 +81,17 @@ body.dark-theme{
   --container-color: hsl(var(--hue-color), 29%, 16%);
   --scroll-bar-color: hsl(var(--hue-color), 12%, 48%);
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 36%);
+  
 }
+
+body.dark-mode #blob {
+  background-color: #FFF;
+}
+
+body.dark-mode #icon {
+  color: #FFF;
+}
+
 
 /*========== Button Dark/Light ==========*/
 .nav__btns{
@@ -90,9 +100,13 @@ body.dark-theme{
   justify-content: space-evenly;
 }
 
+.nav__menu{
+  color: var(--text-color);
+}
+
 .change-theme{
   font-size: 1.25rem;
-  color: var(--title-color);
+  color: var(--text-color);
   margin-right: var(--mb-1);
   cursor: pointer;
 }
@@ -140,7 +154,7 @@ body.dark-theme{
   
   /*==================== REUSABLE CSS CLASSES ====================*/
   .section {
-    padding: 2rem 0 4rem;
+    padding: 1rem 0 2rem;
   }
   
   .section__title {
@@ -212,8 +226,6 @@ body.dark-theme{
     .nav__menu{
         position: fixed;
         bottom: -100%;
-        left: 230px;
-        width: 380px;
         background-color: var(--body-color);
         padding: 2rem 1.5rem 4rem;
         box-shadow: 0 -1px 4px rgba(0, 0, 0, .15);
@@ -377,6 +389,7 @@ body.dark-theme{
 
 .button:hover{
   background-color: var(--first-color-alt);
+  
 }
 
 .button__icon{
@@ -493,6 +506,7 @@ body.dark-theme{
   .skills__list{
     row-gap: 1.5rem;
     padding-left: 2.7rem;
+    margin-bottom: var(--mb-1-5);
   }
 
   .skills__titles{
@@ -694,6 +708,7 @@ body.dark-theme{
 
     .nav__menu{
       padding: 2rem .25rem 4rem;
+      width: 320px;
     }
 
     .nav__list{
@@ -826,5 +841,9 @@ body.dark-theme{
 
     .home__social{
       transform: translateX(-6rem);
+    }
+
+    .skills__icon{
+      margin-right: 15px;
     }
   }
